@@ -22,6 +22,7 @@ build/
 
 # Arquivos locais e específicos do dev
 .env
+!.env
 .env.*.local
 *.local
 
