@@ -1,0 +1,52 @@
+# ============================
+# NODE / VITE / REACT IGNORE
+# ============================
+
+# Logs de qualquer tipo, porque ninguém precisa rever os traumas da última build
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Módulos do caos – ninguém em sã consciência versiona isso
+node_modules/
+
+# Produção e build: arquivos que só servem após o show estar pronto
+dist/
+dist-ssr/
+build/
+.out/
+
+# Arquivos locais e específicos do dev
+.env
+.env.*.local
+*.local
+
+# Cache do Vite e suas artimanhas
+.vite/
+.cache/
+*.tsbuildinfo
+
+# Diretórios e arquivos de editores – porque cada dev tem seu próprio feng shui
+.vscode/*
+!.vscode/extensions.json  # útil manter só esse para compartilhamento do workspace
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.code-workspace
+
+# Sistema operacional e seus fantasmas
+.DS_Store
+Thumbs.db
+
+# lockfiles alternativos (se estiver usando apenas pnpm, por exemplo)
+package-lock.json
+yarn.lock
+# mas mantenha o pnpm-lock.yaml se for seu padrão
+# !pnpm-lock.yaml
