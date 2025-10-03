@@ -1,0 +1,39 @@
+// This file defines the Prisma schema for the tibia-exp-tracker project.
+// It configures SQLite as the datasource and defines the Guild, Player,
+// and DailyExp models with their respective relations and constraints.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Guild {
+  id    Int     @id @default(autoincrement())
+  name  String
+  world String
+  dailyExp DailyExp[]
+
+  @@unique([name, world])
+}
+
+model Player {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  dailyExp DailyExp[]
+}
+
+model DailyExp {
+  id          Int      @id @default(autoincrement())
+  player      Player   @relation(fields: [playerId], references: [id])
+  playerId    Int
+  guild       Guild    @relation(fields: [guildId], references: [id])
+  guildId     Int
+  runDate     DateTime
+  expYesterday Int
+
+  @@unique([playerId, guildId, runDate])
+}
